@@ -47,7 +47,7 @@ async def obtain_content(session, url):
 
 async def main(file):
     num = 0
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf8') as f:
         while True:
             async with aiohttp.client.ClientSession(raise_for_status=True) as session:
                 num += 1
@@ -63,7 +63,7 @@ async def main(file):
                         for en, zh in result:
                             f.write(f'{en}\t{zh}\n')
                 except ValueError:
-                    log.info(data)
+                    pass
 
 
 if __name__ == '__main__':
